@@ -11,6 +11,7 @@ from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 
+# Para utilizar o JWT, não é necessário alterar a views.py
 
 class CharacterAPIView(ModelViewSet):
     queryset = Character.objects.all() # informa p/ a lib qual as consutas a serem feitas

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,11 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app_rick', #essa é a MAIN (Projeto)
+    'app_rick', #essa é a MAIN (App)
     'rest_framework',
     'djoser',
     'rest_framework.authtoken',
-]
+    'rest_framework_simplejwt',
+]    
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -131,6 +133,14 @@ REST_FRAMEWORK = {
         'rest_framework.premissions.AllowAny'
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication' # Trabalhar com WEB token!
+        #'rest_framework.authentication.TokenAuthentication' # Trabalhar com WEB token!
+        'rest_framework_simplejwt.authentication.JWTAuthentication' # Utilizar o JWT como TOKEN!!!
     ],
 }
+
+SIMPLE_JWT = {
+    'AUTH_HEADERS_TYPES': ("Bearer",),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=1),
+    'REFRESH_TOKEN_LIFETIME': timedelta(minutes=10),
+}
+

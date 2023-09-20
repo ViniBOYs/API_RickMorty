@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('app_rick.urls')),
     path('',include('djoser.urls')), #adiciona as rotas de gerenciamento de usuarioes
-    path('auth/',include('djoser.urls.authtoken')), #adiciona a rota de obter o token
+    path('auth/',include('djoser.urls.authtoken')), #adiciona a rota de obter o token por WEBTOKEN!!!
+    path('auth/',include('djoser.urls.jwt')) #adiciona a rota de token por JWT
 ]
